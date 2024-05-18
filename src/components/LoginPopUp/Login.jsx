@@ -14,7 +14,7 @@ import validation from './Loginvalidation';
 
 const Login =() =>
 {
-    
+    const {user, setUser } = useContext(StoreContext);
     const[error,seterror]=useState({})
     const {token,setToken}=useContext(StoreContext)
 const [values,setvalues]=useState ({
@@ -28,7 +28,7 @@ const handleSubmit = (event) => {
     seterror(errors);
 
     if (errors.email === "" && errors.password === "") {
-        fetch('http://localhost:2000/login', {
+        fetch('http://localhost:4001/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,6 +57,8 @@ const handleSubmit = (event) => {
                 // setToken(response.data.token);
                 setToken('login successfully')
                 console.log(token)
+                 setUser(response.userId)
+                 console.log('user',user);
                 // localStorage.setItem("token",response.data.token)
                 navigate('/');
                // setShowLogin(false);

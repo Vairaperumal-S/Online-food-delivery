@@ -50,7 +50,7 @@ const handleSubmit = (event) => {
 
 
 if (error.name === "" && error.email === "" && error.password === "" && error.phone === "") {
-    fetch('http://localhost:2000/signup', {
+    fetch('http://localhost:4001/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
