@@ -242,7 +242,7 @@ export const menu_list = [
     },
 
     {
-        menu_name: "Pure Veg",
+        menu_name: "Pure veg",
         menu_image: menu_6
     },
 
@@ -264,7 +264,8 @@ export const food_list = [
         image: food_1,
         price: 12,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad"
+        category: "Salad",
+        h_id:"1"
     },
 
     {
@@ -274,6 +275,8 @@ export const food_list = [
         price: 18,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Salad"
+        ,
+        h_id:"2"
     },
 
     {
@@ -283,6 +286,10 @@ export const food_list = [
         price: 16,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Salad"
+        ,
+        h_id:"3"
+        
+
     },
 
     {
@@ -448,7 +455,7 @@ export const food_list = [
         image: food_21,
         price: 14,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
+        category: "Pure veg"
     },
 
     {
@@ -457,7 +464,7 @@ export const food_list = [
         image: food_22,
         price: 22,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
+        category: "Pure veg"
     },
 
     {
@@ -466,7 +473,7 @@ export const food_list = [
         image: food_23,
         price: 10,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
+        category: "Pure veg"
     },
 
     {
@@ -475,7 +482,7 @@ export const food_list = [
         image: food_24,
         price: 12,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
+        category: "Pure veg"
     },
     
     {
@@ -534,11 +541,11 @@ export const food_list = [
 
     {
         _id: "31",
-        name: "Somen Noodles",
+        name: "Veg Noodles",
         image: food_31,
         price: 20,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Noodles"
+        category: "Pure veg"
     },
 
     {

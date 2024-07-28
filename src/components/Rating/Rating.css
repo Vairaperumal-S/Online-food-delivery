@@ -1,0 +1,15 @@
+.rating-container .star {
+    margin-right:0px; /* Adjust spacing between stars */
+}
+
+.rating-container .full-star {
+    color: gold; /* Full star color */
+}
+
+.rating-container .half-star {
+    color: gold; /* Half star color */
+}
+
+.rating-container .empty-star {
+    color: lightgray; /* Empty star color */
+}

@@ -1,0 +1,25 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review {
+    width: 70%;
+    margin-left: max(5vw, 25px);
+    /* margin-top: 50px; */
+    color: #6d6d6d;
+    font-size: 16px;
+}
+
+.input-box {
+    width:150px;
+}
+
+
+.input-box input {
+    padding: 10px;
+}
+.input-box textarea{
+    padding:25px;
+}

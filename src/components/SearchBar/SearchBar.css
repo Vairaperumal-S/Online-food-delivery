@@ -1,12 +1,17 @@
 .search{
     position: relative;
+
+    width: 50px;
     /* display: flex;
     flex-direction: column; */
+    transition: all .3s ease-in-out 0s;
 }
 
 .search-inputs{
     display: flex;
     margin: 20px;
+
+    margin-bottom: 0px;
 }
 
 .search input{
@@ -18,7 +23,17 @@
     font-size: 15px;
     padding: 15px;
     height: 30px;
-    width:  210px;
+    /* width:  210px; */
+    width: 0px;
+
+    transition: all .3s ease-in-out 0s;
+    border-bottom: 1px solid transparent;
+}
+
+.search .search-visible{
+    width: 210px;
+    border-bottom-color: #49557e;
+    padding: 15px;
 }
 
 .search-icon{
@@ -27,7 +42,7 @@
 
     background-color: white;
     display: grid;
-    place-items: center;
+    /* place-items: center; */
 }
 
 input:focus{
@@ -36,8 +51,9 @@ input:focus{
 }
 
 .search-icon svg{
-    font-size: 26px;
+    font-size: 36px;
     color:  #49557e;
+    margin-bottom: 18px;
 }
 
 .data-result{

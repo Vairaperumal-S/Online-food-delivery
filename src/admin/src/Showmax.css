@@ -1,0 +1,20 @@
+.showmax {
+    padding: 20px;
+  }
+  
+  .results {
+    margin-top: 20px;
+  }
+  
+  .result-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  

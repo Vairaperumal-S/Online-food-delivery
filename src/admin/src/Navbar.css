@@ -1,0 +1,41 @@
+.navbar
+{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 4%; 
+}
+
+
+.navbar .logo 
+{
+    width:max(10%,80px)
+    
+}
+
+.navbar .profile
+{
+    width:max(10%,80px);
+}
+ .show_order
+{
+    background-color: aqua;
+    border:none;
+    border-radius:10px;
+     padding:10px; 
+     position:absolute;
+     margin-bottom:10px;
+     left:0px;
+     
+    
+ 
+}
+
+.logout_button {
+    position: absolute;   
+    right:20px; 
+    background-color:beige;
+    border:none;
+    border-radius:10px;
+     padding:10px 15px; 
+}

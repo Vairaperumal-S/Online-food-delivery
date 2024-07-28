@@ -2,12 +2,17 @@ import React, { useContext, useEffect } from 'react'
 import './FoodItem.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext';
+import Ratingcomponent from '../Rating/Rating';
+ 
+
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+  
 
 
-const FoodItem = ({id,name,price,description,image}) => {
 
+const FoodItem = ({id,name,price,description,image,Restaurant_name,Rating}) => {
+    
   useEffect(()=>{
     Aos.init({offset: 60, once: true,  disable: 'phone', duration: 300,
     initClassName: 'aos-init',
@@ -37,10 +42,11 @@ const FoodItem = ({id,name,price,description,image}) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
             <p>{name}</p>
-            <img src={assets.rating_starts} alt="" />
-        </div>      
+            <Ratingcomponent rating={Rating}/>
+        </div>  
+      <p style={{ color: 'black' }} className="food-item-resname">{Restaurant_name}</p>
         <p className="food-item-desc">{description}</p>
-        <p className="food-item-price">${price}</p>
+        <p className="food-item-price">&#x20B9;{price}</p>
       </div>
     </div>
   )

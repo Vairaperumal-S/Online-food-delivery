@@ -1,15 +1,18 @@
 
 import React, { createContext, useEffect, useState } from "react";
+import { hotel_list } from "../assets/assets";
 
 
 
 export const StoreContext = createContext(null);
-const url="http://localhost:4002/"
+const url="http://localhost:4003/"
 
 const StoreContextProvider = (props) => {
     const [user,setUser]=useState(null)
     const [cartItems, setCartItems] = useState({});
+    const [success, setSuccess] = useState(false);
     const [food_list,setfoodlist]=useState([])
+    
     const [token,setToken]=useState('');
     const addToCart = (itemId) => {
         if (!cartItems[itemId]) {
@@ -32,7 +35,7 @@ const StoreContextProvider = (props) => {
     
 
         {
-            fetch('http://localhost:4002/list', {
+            fetch('http://localhost:4003/list', {
                 method: 'GET',
               
               })
@@ -54,7 +57,63 @@ const StoreContextProvider = (props) => {
             }, [])
         
 
+        
 
+            useEffect(() => {
+                fetch('http://localhost:4003/listhotel', {
+                method: 'GET',
+              
+              })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch hotel data');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            sethotel_list(data.data);
+                        } else {
+                            throw new Error(data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching hotel data:', error);
+                    });
+            }, []);
+
+
+            useEffect(()=>
+            {
+               
+                fetch('http://localhost:4007/checkauth', {
+                    headers: {
+                        'access-token': localStorage.getItem("token")
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json(); // Parse the response as JSON
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .then(data => {
+                    setToken(data.userId);
+                    console.log('Response data:', data);
+                })
+                .catch(err => {
+                    console.error('Fetch error:', err);
+                });
+
+
+
+
+
+
+
+
+            },[])
 
 
    
@@ -80,9 +139,51 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
     
+    const data = hotel_list
+
+    
+    const [filterData, setFilterData] = useState([]);
+    const [wordEntered, setwordEntered] = useState("");
+
+    const handleFilter = (event) => {
+        const searchWord = event.target.value;
+        setwordEntered(searchWord);
+
+        const newFilter = data.filter((value) => {
+            return value.hotel_name.toLowerCase().includes(searchWord.toLowerCase());
+        });
+
+        if (searchWord === "") {
+            setFilterData([]);
+        }
+        else {
+            setFilterData(newFilter);
+        }
+    };
+
+    
+    const clearInput = () => {
+        setFilterData([]);
+        setwordEntered("");
+    }
+
+    const handleValue = (arg) => {
+        // let restaurant = document.getElementById("rest");
+        let ans = arg;
+        console.log(ans+"\t");
+        // console.log(arg);
+        setwordEntered(ans);
+        if (ans !== "") {
+            setFilterData([]);
+        }
+    }
+
+    const [hotel,sethotel] = useState(0);
 
     const contextValue = {
         user,
+        success,
+        setSuccess,
         setUser,
         food_list,
         cartItems,
@@ -91,7 +192,19 @@ const StoreContextProvider = (props) => {
         removeFromCart,
         getTotalCartAmount,
         token,
-        setToken,url
+        setToken,url,
+    
+
+        handleFilter,
+        clearInput,
+        handleValue,
+        filterData,
+        setFilterData,
+        wordEntered,
+        setwordEntered,
+
+        hotel,
+        sethotel
     }
 
     return (

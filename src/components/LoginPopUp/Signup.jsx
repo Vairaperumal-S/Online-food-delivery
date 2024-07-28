@@ -7,11 +7,10 @@ import { FaUser } from "react-icons/fa";
 
 import validation from './Signupvalidation'; 
 import foodImage from './food_10.png';
+import img from './food_11.png'
 
-// Inside the component:
 
 
-//import axios from 'axios';  
 
 
 
@@ -50,7 +49,7 @@ const handleSubmit = (event) => {
 
 
 if (error.name === "" && error.email === "" && error.password === "" && error.phone === "") {
-    fetch('http://localhost:4001/signup', {
+    fetch('http://localhost:4007/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -113,7 +112,7 @@ if (error.name === "" && error.email === "" && error.password === "" && error.ph
 
     return (
    <div   style={{
-   backgroundImage: `url(${foodImage})`, // Use require() to import the image
+   backgroundImage: `url(${img})`, // Use require() to import the image
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',

@@ -2,11 +2,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import food from './food_17.png'
+
+
 
 import React, { useContext } from 'react';
 import { StoreContext } from "../../context/StoreContext"; // Adjust the path based on your project structure
 
-import {useState}from 'react';
+import {useState,useEffect}from 'react';
 import validation from './Loginvalidation'; 
 
 
@@ -14,7 +19,7 @@ import validation from './Loginvalidation';
 
 const Login =() =>
 {
-    const {user, setUser } = useContext(StoreContext);
+    const {user, setUser,cartItems } = useContext(StoreContext);
     const[error,seterror]=useState({})
     const {token,setToken}=useContext(StoreContext)
 const [values,setvalues]=useState ({
@@ -28,7 +33,7 @@ const handleSubmit = (event) => {
     seterror(errors);
 
     if (errors.email === "" && errors.password === "") {
-        fetch('http://localhost:4001/login', {
+        fetch('http://localhost:4007/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,19 +59,37 @@ const handleSubmit = (event) => {
         })
         .then(response=>{
             if (response.success) {
-                // setToken(response.data.token);
-                setToken('login successfully')
+                
+                //setToken('login successfully')
+                localStorage.setItem("token",response.tok);
+                setToken(response.tok);
+        
+                console.log(response);
                 console.log(token)
-                 setUser(response.userId)
-                 console.log('user',user);
+                console.log(response.useremail)
+                console.log(response.userpassword)
+                console.log(response.userId)
+                if(response.useremail==='admin@gmail.com' && response.userpassword==='$2b$10$gubMCZFZ4gvFE/9jNMlzbe1IFeCMeSXsM.5FVM/rW8yQ.y4SWqzyq')
+                    {
+                        console.log('adminsgserhertherthertjhrtyjyujrtyjyu')
+                        //navigate('/admin')
+                    }
+                 setUser(response.userId);
+
+                 console.log(user)
+                
+          
+             
+                 console.log('user:',user);
+                
                 // localStorage.setItem("token",response.data.token)
                 navigate('/');
                // setShowLogin(false);
                
               
             } else {
-                alert("No record");
-                setToken('');
+                toast.error("No record");
+                //setToken('');
             }
         })
         .catch(error => {
@@ -74,11 +97,11 @@ const handleSubmit = (event) => {
 
             if(error.message==='User not found')
             {
-                alert('User not found.Please check your email and ty again');
+                toast.error('User not found.Please check your email and ty again');
             }
             if(error.message==='Incorrect password')
             {
-                alert('Incorrect password.Please check your email and password and ty again');
+                toast.error('Incorrect password.Please check your email and password and ty again');
             }
 
         
@@ -143,13 +166,20 @@ const handleSubmit = (event) => {
 
     return (
    <div style={{
-    background: 'linear-gradient(to bottom right, #4B0082, #FF69B4)',
-    boxShadow: '0px 0px 20px rgba(255, 255, 255, 0.5)'
+     backgroundImage: `url(${food})`, // Use require() to import the image
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    minHeight: '100vh', // Set minimum height to ensure full viewport coverage
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }}
      className='d-flex justify-content-center align-items-center bg primary vh-100 '>
    <div style={{
-    background: 'linear-gradient(to bottom right, #800080, #ff00ff)',
-    boxShadow: '0px 0px 20px rgba(255, 255, 255, 0.5)'
+    background: 'transparent' , border: '2px solid brown',
+  backdropFilter: 'blur(30px)', 
+  boxShadow: '0 0 10px brown'
   }}className='bg-white p-3 rounded w-25'>
    <form style={{ backgroundColor: 'transparent', border: 'none' }} action="" onSubmit={handleSubmit}>
   
